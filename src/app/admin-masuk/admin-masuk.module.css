@@ -1,0 +1,205 @@
+.page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-6) var(--space-4);
+  position: relative;
+  background: var(--color-admin-bg);
+}
+
+.bg {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(ellipse at top left, #1e3a5f 0%, #0F172A 60%);
+  z-index: 0;
+}
+
+.container {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-6);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: white;
+  text-decoration: none;
+  font-size: 1.5rem;
+}
+
+.logoText {
+  font-family: var(--font-display);
+  font-weight: 800;
+}
+
+.adminBadge {
+  background: rgba(245, 158, 11, 0.2);
+  color: #f59e0b;
+  border: 1px solid rgba(245, 158, 11, 0.4);
+  border-radius: var(--radius-full);
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 2px 10px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.card {
+  width: 100%;
+  background: var(--color-admin-surface);
+  border: 1px solid var(--color-admin-border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-8);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--color-admin-text);
+  text-align: center;
+  margin-bottom: var(--space-2);
+}
+
+.subtitle {
+  color: var(--color-admin-muted);
+  text-align: center;
+  font-size: 0.9rem;
+  margin-bottom: var(--space-6);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.form .form-label {
+  color: var(--color-admin-text);
+}
+
+.form .form-control {
+  background: var(--color-admin-surface2);
+  border-color: var(--color-admin-border);
+  color: var(--color-admin-text);
+}
+
+.form .form-control:focus {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.15);
+}
+
+.form .form-control::placeholder {
+  color: var(--color-admin-muted);
+}
+
+.phoneWrap {
+  display: flex;
+  align-items: center;
+  border: 1.5px solid var(--color-admin-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.phoneWrap:focus-within {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.15);
+}
+
+.prefix {
+  padding: 0 var(--space-3);
+  background: var(--color-admin-surface2);
+  color: var(--color-admin-muted);
+  font-size: 0.875rem;
+  border-right: 1.5px solid var(--color-admin-border);
+  height: 46px;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.phoneField {
+  background: var(--color-admin-surface2) !important;
+  border: none !important;
+  box-shadow: none !important;
+  color: var(--color-admin-text) !important;
+  border-radius: 0 !important;
+  flex: 1;
+}
+
+.otpInput {
+  font-family: var(--font-mono);
+  font-size: 1.75rem;
+  text-align: center;
+  letter-spacing: 0.4em;
+  font-weight: 700;
+  background: var(--color-admin-surface2) !important;
+  color: var(--color-admin-text) !important;
+  border-color: var(--color-admin-border) !important;
+}
+
+.devBanner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  background: rgba(245, 158, 11, 0.08);
+  border: 1px dashed rgba(245, 158, 11, 0.4);
+  border-radius: var(--radius-md);
+  padding: var(--space-3) var(--space-4);
+  margin-bottom: var(--space-4);
+  color: var(--color-admin-muted);
+  font-size: 0.875rem;
+}
+
+.devCode {
+  font-family: var(--font-mono);
+  font-size: 1.25rem;
+  letter-spacing: 0.2em;
+  color: #f59e0b;
+}
+
+.errorBox {
+  background: rgba(220, 38, 38, 0.1);
+  color: #f87171;
+  border-radius: var(--radius-md);
+  padding: var(--space-3) var(--space-4);
+  font-size: 0.9rem;
+  margin-bottom: var(--space-4);
+}
+
+.form .btn-primary {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: var(--color-admin-bg);
+}
+
+.form .btn-primary:hover:not(:disabled) {
+  background: var(--color-accent-dark);
+  border-color: var(--color-accent-dark);
+  box-shadow: 0 4px 16px rgba(245, 158, 11, 0.35);
+}
+
+.form .btn-ghost {
+  color: var(--color-admin-muted);
+}
+
+.backLink {
+  color: rgba(255,255,255,0.5);
+  font-size: 0.875rem;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.backLink:hover {
+  color: rgba(255,255,255,0.8);
+}
