@@ -29,12 +29,6 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Kode OTP tidak valid atau sudah kedaluwarsa' }, { status: 400 })
     }
 
-    // Tandai OTP sebagai terverifikasi
-    await db.otpSession.update({
-      where: { id: otpSession.id },
-      data: { verified: true },
-    })
-
     // Cari atau buat user
     let user = await db.user.findUnique({ where: { phone: normalizedPhone } })
 
@@ -56,6 +50,12 @@ export async function POST(request: Request) {
         data: { name: name.trim() },
       })
     }
+
+    // Tandai OTP sebagai terverifikasi
+    await db.otpSession.update({
+      where: { id: otpSession.id },
+      data: { verified: true },
+    })
 
     // Buat JWT token
     const token = await createToken({

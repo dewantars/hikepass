@@ -11,7 +11,7 @@ const ADMIN_PROTECTED = ['/admin']
 // Routes yang tidak boleh diakses kalau sudah login
 const AUTH_ROUTES = ['/masuk', '/daftar', '/admin-masuk']
 
-export async function middleware(request: NextRequest) {
+export default async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl
   const token = request.cookies.get('hikepass-token')?.value
 
