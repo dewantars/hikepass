@@ -1,0 +1,186 @@
+.container {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-5);
+  box-shadow: var(--shadow-sm);
+  width: 100%;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-4);
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin: 0;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.btnNav {
+  background: var(--color-surface-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--color-text);
+  transition: all var(--transition-fast);
+}
+
+.btnNav:hover:not(:disabled) {
+  background: var(--color-primary-light);
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.btnNav:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.currentMonth {
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--color-text);
+  min-width: 120px;
+  text-align: center;
+}
+
+.weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+  margin-bottom: 8px;
+}
+
+.weekday {
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-text-tertiary);
+  text-transform: uppercase;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+}
+
+.dayCell {
+  aspect-ratio: 1;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  padding: 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  position: relative;
+}
+
+.dayCellEmpty {
+  background: transparent;
+  border: none;
+  cursor: default;
+}
+
+.dateNumber {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-text);
+  align-self: flex-start;
+}
+
+.quotaBadge {
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+  width: 100%;
+  text-align: center;
+}
+
+.quotaAvailable {
+  background: var(--color-success-light);
+  color: var(--color-success-dark);
+}
+
+.quotaLow {
+  background: rgba(245, 158, 11, 0.2);
+  color: #b45309;
+}
+
+.quotaFull {
+  background: var(--color-danger-light);
+  color: var(--color-danger);
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.quotaClosed {
+  background: var(--color-surface-2);
+  color: var(--color-text-tertiary);
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.dayCell:hover:not(.quotaFull):not(.quotaClosed) {
+  border-color: var(--color-primary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+.daySelected {
+  border-color: var(--color-primary);
+  background: var(--color-primary-light);
+  box-shadow: 0 0 0 2px var(--color-primary);
+}
+
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 250px;
+  color: var(--color-text-secondary);
+  gap: var(--space-3);
+}
+
+.spinner {
+  width: 24px;
+  height: 24px;
+  border: 3px solid var(--color-border);
+  border-top-color: var(--color-primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@media (max-width: 480px) {
+  .dayCell { padding: 2px; }
+  .dateNumber { font-size: 0.8rem; }
+  .quotaBadge { font-size: 0.6rem; padding: 1px 2px; }
+  .container { padding: var(--space-4) var(--space-3); }
+}

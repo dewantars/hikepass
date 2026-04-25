@@ -1,0 +1,233 @@
+.page {
+  background: var(--color-background);
+  min-height: 100vh;
+  padding-bottom: var(--space-10);
+}
+
+.hero {
+  position: relative;
+  height: 50vh;
+  min-height: 400px;
+  max-height: 600px;
+  display: flex;
+  align-items: flex-end;
+  padding-bottom: var(--space-8);
+  overflow: hidden;
+}
+
+.heroBg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.heroImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.heroFallback {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #1e293b 0%, #0F172A 100%);
+}
+
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(15, 23, 42, 1) 0%, rgba(15, 23, 42, 0.2) 100%);
+  z-index: 1;
+}
+
+.heroContent {
+  position: relative;
+  z-index: 2;
+  color: white;
+  width: 100%;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 800;
+  margin-bottom: var(--space-2);
+  line-height: 1.1;
+  text-shadow: 0 4px 12px rgba(0,0,0,0.5);
+}
+
+.location {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.9);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.contentWrapper {
+  margin-top: calc(var(--space-8) * -1);
+  position: relative;
+  z-index: 10;
+}
+
+.layoutGrid {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: var(--space-6);
+  align-items: start;
+}
+
+.mainCol {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.sideCol {
+  position: sticky;
+  top: 88px; /* Navbar height + padding */
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-6);
+  box-shadow: var(--shadow-sm);
+}
+
+.sectionTitle {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: var(--space-4);
+  color: var(--color-text);
+  border-bottom: 2px solid var(--color-surface-2);
+  padding-bottom: var(--space-2);
+}
+
+.description {
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+  font-size: 1.05rem;
+  white-space: pre-wrap;
+}
+
+.infoGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: var(--space-4);
+  margin-top: var(--space-4);
+}
+
+.infoItem {
+  background: var(--color-surface-2);
+  padding: var(--space-3);
+  border-radius: var(--radius-md);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.infoLabel {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.infoValue {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.trailList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.trailItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-3) var(--space-4);
+  background: var(--color-surface-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+.trailName {
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.trailStatus {
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+}
+
+.trailOpen {
+  background: var(--color-success-light);
+  color: var(--color-success-dark);
+}
+
+.trailClosed {
+  background: var(--color-danger-light);
+  color: var(--color-danger);
+}
+
+.priceCard {
+  text-align: center;
+}
+
+.priceLabel {
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+  margin-bottom: 4px;
+}
+
+.priceAmount {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--color-primary);
+  line-height: 1;
+  margin-bottom: var(--space-2);
+}
+
+.priceUnit {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--color-text-tertiary);
+}
+
+.groupRule {
+  font-size: 0.85rem;
+  color: var(--color-text-tertiary);
+  margin-bottom: var(--space-5);
+  background: var(--color-surface-2);
+  padding: var(--space-2);
+  border-radius: var(--radius-sm);
+}
+
+.actionButton {
+  margin-top: var(--space-4);
+}
+
+@media (max-width: 992px) {
+  .layoutGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .sideCol {
+    position: static;
+  }
+}
