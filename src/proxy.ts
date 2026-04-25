@@ -5,8 +5,7 @@ import { verifyToken } from '@/lib/auth'
 // Routes yang butuh login user biasa
 const USER_PROTECTED = ['/booking', '/pembayaran', '/tiket', '/riwayat']
 
-// Routes yang butuh admin
-const ADMIN_PROTECTED = ['/admin']
+// Routes yang butuh admin (Logikanya dipindah ke isAdminProtected agar tidak bentrok dengan /admin-masuk)
 
 // Routes yang tidak boleh diakses kalau sudah login
 const AUTH_ROUTES = ['/masuk', '/daftar', '/admin-masuk']
@@ -18,7 +17,7 @@ export default async function proxy(request: NextRequest) {
   const session = token ? await verifyToken(token) : null
 
   const isUserProtected = USER_PROTECTED.some(p => pathname.startsWith(p))
-  const isAdminProtected = ADMIN_PROTECTED.some(p => pathname.startsWith(p))
+  const isAdminProtected = pathname === '/admin' || pathname.startsWith('/admin/')
   const isAuthRoute = AUTH_ROUTES.some(p => pathname.startsWith(p))
 
   // Redirect ke login jika belum login dan akses halaman protected
@@ -36,7 +35,11 @@ export default async function proxy(request: NextRequest) {
     if (session.role === 'ADMIN') {
       return NextResponse.redirect(new URL('/admin', request.url))
     }
-    return NextResponse.redirect(new URL('/', request.url))
+    // Jika user biasa mencoba akses /masuk atau /daftar, alihkan ke /
+    if (pathname === '/masuk' || pathname === '/daftar') {
+      return NextResponse.redirect(new URL('/', request.url))
+    }
+    // Biarkan user biasa mengakses /admin-masuk untuk login sebagai admin
   }
 
   return NextResponse.next()
