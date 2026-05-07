@@ -4,11 +4,26 @@ const prisma = new PrismaClient();
 
 async function main() {
   const hash = await bcrypt.hash('admin123', 10);
-  await prisma.user.updateMany({
-    where: { role: 'ADMIN' },
-    data: { password: hash }
+  
+  const adminPhone = '628111111111'; // "08111111111" => "628111111111"
+
+  const adminUser = await prisma.user.upsert({
+    where: { phone: adminPhone },
+    update: { 
+      password: hash,
+      role: 'ADMIN',
+      mountainId: 1 // Assign to Mountain 1 (Rinjani)
+    },
+    create: {
+      phone: adminPhone,
+      name: 'Super Admin Rinjani',
+      password: hash,
+      role: 'ADMIN',
+      mountainId: 1
+    }
   });
-  console.log('Admin password updated');
+
+  console.log('Admin user created/updated:', adminUser);
 }
 
 main()
